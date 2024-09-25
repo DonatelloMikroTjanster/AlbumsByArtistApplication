@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 
-public class EdufyArtistApplication {
+public class AlbumsByArtistApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EdufyArtistApplication.class, args);
+        SpringApplication.run(AlbumsByArtistApplication.class, args);
     }
 
 }
