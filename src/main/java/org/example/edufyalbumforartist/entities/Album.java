@@ -17,7 +17,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 50, nullable = false)
+    @Column(name = "name", length = 100, nullable = false)
     private String name;
 
 
@@ -69,4 +69,5 @@ public class Album {
     public void setArtists(Set<Artist> artists) {
         this.artists = artists;
     }
+
 }
