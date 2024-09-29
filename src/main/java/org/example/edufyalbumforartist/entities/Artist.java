@@ -13,7 +13,7 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 20, nullable = false)
+    @Column(name = "name", length = 100, nullable = false)
     private String name;
 
     @ManyToMany(mappedBy = "artists", cascade = CascadeType.ALL)
@@ -43,6 +43,7 @@ public class Artist {
     public void setName(String name) {
         this.name = name;
     }
+
 
 
 }
