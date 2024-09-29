@@ -18,7 +18,7 @@ public class ArtistController {
     @Autowired
     private ArtistService artistService;
     @GetMapping("/albums/{artistId}")
-    public ResponseEntity<Set<Album>> getAlbumsByArtist(@PathVariable Integer artistId) {
+    public ResponseEntity<Set<Album>> getAlbumsByArtist(@PathVariable Long artistId) {
         return ResponseEntity.ok(artistService.getAlbumsByArtist(artistId));
     }
 
