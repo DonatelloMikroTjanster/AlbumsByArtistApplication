@@ -16,6 +16,9 @@ public class Artist {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
+    @Column(name = "genre", nullable = false, length = 100)
+    private String genre;
+
     @ManyToMany(mappedBy = "artists", cascade = CascadeType.ALL)
     private Set<Album> albums = new HashSet<>();
 
@@ -42,6 +45,14 @@ public class Artist {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
 
