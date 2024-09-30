@@ -20,18 +20,16 @@ public class Album {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
-    @Column(name = "genre", nullable = false, length = 100)
-    private String genre;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Column(name = "release_date")
+    private Date releaseDate;
 
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "album_artist", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "artist_id"))
     private Set<Artist> artists = new HashSet<>();
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name = "release_date")
-    private Date releaseDate;
+
 
     public Album() {
     }
