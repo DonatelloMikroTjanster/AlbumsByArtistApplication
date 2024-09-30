@@ -20,6 +20,10 @@ public class Album {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
+    @Column(name = "genre", nullable = false, length = 100)
+    private String genre;
+
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "album_artist", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "artist_id"))
