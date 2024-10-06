@@ -1,43 +1,32 @@
 package org.example.edufyalbumforartist.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "album")
-public class Album {
+@Table(name = "genre")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Genre {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 100, nullable = false)
+    @Column(name = "name", length = 100 )
     private String name;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name = "release_date")
-    private Date releaseDate;
-
-    @ManyToMany
+    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL)
     @JsonIgnore
-    @JoinTable(name = "album_artist", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "artist_id"))
     private Set<Artist> artists = new HashSet<>();
 
 
-
-    public Album() {
+    public Genre() {
     }
-
-    public Album(String name) {
-        this.name = name;
-    }
-
 
     public Long getId() {
         return id;
@@ -55,14 +44,6 @@ public class Album {
         this.name = name;
     }
 
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
     public Set<Artist> getArtists() {
         return artists;
     }
@@ -70,5 +51,4 @@ public class Album {
     public void setArtists(Set<Artist> artists) {
         this.artists = artists;
     }
-
 }
